@@ -24,6 +24,13 @@ namespace WebAddressbookTests
             ReturnToHomePage();
             return this;
         }
+        public ContactHelper RemoveContact(int p)
+        {
+            SelectContact(p);
+            RemoveContact();
+            CloseContactAlert();
+            return this;
+        }
         public ContactHelper InitContactCreation()
         {
             driver.FindElement(By.LinkText("add new")).Click();
@@ -115,5 +122,21 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("home page")).Click();
             return this;
         }
+        public ContactHelper SelectContact(int p)
+        {
+            driver.FindElement(By.XPath("//*[@id='maintable']/tbody/tr/td[" + p + "]/input")).Click();
+            return this;
+        }
+        public ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
+        }
+        public ContactHelper CloseContactAlert()
+        {
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
+       
     }
 }
