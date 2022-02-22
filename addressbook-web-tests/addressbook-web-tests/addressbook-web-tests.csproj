@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tests\ContactModificationTests.cs" />
     <Compile Include="tests\ContactRemovalTests1.cs" />
     <Compile Include="tests\GroupModificationTests.cs" />
     <Compile Include="model\AccountData.cs" />

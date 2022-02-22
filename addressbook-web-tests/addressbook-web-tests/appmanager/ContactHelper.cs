@@ -24,6 +24,18 @@ namespace WebAddressbookTests
             ReturnToHomePage();
             return this;
         }
+
+        public ContactHelper Modify(int p, ContactData newData)
+        {
+            SelectContact(p);
+            InitContactModification();
+            FillContactForm(newData);
+            SubmitContactModification();
+            ReturnToHomePage();
+            return this;
+        }
+
+      
         public ContactHelper RemoveContact(int p)
         {
             SelectContact(p);
@@ -85,10 +97,10 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("homepage")).SendKeys(contact.Homepage);
             driver.FindElement(By.Name("bday")).Click();
             new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
-            driver.FindElement(By.XPath("//option[@value='']")).Click();
+            driver.FindElement(By.XPath("//option[@value='-']")).Click();
             driver.FindElement(By.Name("bmonth")).Click();
             new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
-            driver.FindElement(By.XPath("//option[@value='']")).Click();
+            driver.FindElement(By.XPath("//option[@value='-']")).Click();
             driver.FindElement(By.Name("byear")).Click();
             driver.FindElement(By.Name("byear")).Clear();
             driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
@@ -137,6 +149,17 @@ namespace WebAddressbookTests
             driver.SwitchTo().Alert().Accept();
             return this;
         }
-       
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public ContactHelper InitContactModification()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            return this;
+        }
+
     }
 }
