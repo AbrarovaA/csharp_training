@@ -15,6 +15,15 @@ namespace WebAddressbookTests
             : base(manager)
         {           
         }
+
+        public ContactHelper CreateContact(ContactData contact)
+        {
+            InitContactCreation();
+            FillContactForm(contact);
+            SubmitContactCreation();
+            ReturnToHomePage();
+            return this;
+        }
         public ContactHelper InitContactCreation()
         {
             driver.FindElement(By.LinkText("add new")).Click();
