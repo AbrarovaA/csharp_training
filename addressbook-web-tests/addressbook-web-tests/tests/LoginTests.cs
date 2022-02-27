@@ -9,7 +9,7 @@ namespace WebAddressbookTests
 {
     [TestFixture]
     public class LoginTests : TestBase
-    {
+    {       
         [Test]
         public void LoginWithValidCredentials()
         {
@@ -31,7 +31,7 @@ namespace WebAddressbookTests
             app.Auth.Logout();
 
             //action
-            AccountData account = new AccountData("admin", "123456");
+            AccountData account = new AccountData("admin1", "ggggggg");
             app.Auth.Login(account);
 
             //verification
