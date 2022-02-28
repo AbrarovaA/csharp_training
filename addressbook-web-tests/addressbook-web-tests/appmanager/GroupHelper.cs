@@ -42,9 +42,9 @@ namespace WebAddressbookTests
                 FillGroupForm(newData);
                 SubmitGroupCreation();
                 ReturnToGroupsPage();
+                SelectGroup(p);
             }
-
-            SelectGroup(p);
+            
             InitGroupModification();
             FillGroupForm(newData);
             SubmitGroupModification();
@@ -69,8 +69,9 @@ namespace WebAddressbookTests
                 FillGroupForm(firstgroup);
                 SubmitGroupCreation();
                 ReturnToGroupsPage();
+                SelectGroup(p);
             }
-            SelectGroup(p);
+            
             RemoveGroup();
             ReturnToGroupsPage();
             return this;

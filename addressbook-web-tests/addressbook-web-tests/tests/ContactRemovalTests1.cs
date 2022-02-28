@@ -12,8 +12,9 @@ namespace WebAddressbookTests
     {
         [Test]
         public void ContactRemovalTest()
-        {            
-            app.Contacts.RemoveContact(1);           
+        {
+            ContactData firstcontact = new ContactData("myname", "mylastname");
+            app.Contacts.RemoveContact(1, firstcontact);           
         }            
         
     }
