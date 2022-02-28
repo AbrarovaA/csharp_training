@@ -30,6 +30,20 @@ namespace WebAddressbookTests
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
+
+            if (IsElementPresent(By.Name("selected[]")))
+
+            {
+                SelectGroup(p);
+            }
+            else
+            {
+                InitGroupCreation();
+                FillGroupForm(newData);
+                SubmitGroupCreation();
+                ReturnToGroupsPage();
+            }
+
             SelectGroup(p);
             InitGroupModification();
             FillGroupForm(newData);
