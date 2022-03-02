@@ -53,25 +53,12 @@ namespace WebAddressbookTests
         }
 
       
-        public GroupHelper Remove(int p, GroupData firstgroup)
+        public GroupHelper Remove(int p)
 
         {            
-            manager.Navigator.GoToGroupsPage();                     
-
-            if (IsElementPresent(By.Name("selected[]")))
-
-            {
-                SelectGroup(p);
-            }
-            else
-            {                
-                InitGroupCreation();
-                FillGroupForm(firstgroup);
-                SubmitGroupCreation();
-                ReturnToGroupsPage();
-                SelectGroup(p);
-            }
-            
+            manager.Navigator.GoToGroupsPage();          
+          
+            SelectGroup(p);
             RemoveGroup();
             ReturnToGroupsPage();
             return this;
