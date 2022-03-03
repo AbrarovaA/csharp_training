@@ -28,8 +28,7 @@ namespace WebAddressbookTests
                 GroupData firstgroup = new GroupData("1");
                 app.Groups.Creat(firstgroup);
                 app.Groups.Remove(1);
-            }
-                   
+            }                   
                      
         }            
                                

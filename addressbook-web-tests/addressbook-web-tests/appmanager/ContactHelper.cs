@@ -26,21 +26,8 @@ namespace WebAddressbookTests
         }
 
         public ContactHelper Modify(int p, ContactData newData)
-        {
-            if (IsElementPresent(By.Name("selected[]")))
-
-            {
-                SelectContact(p);
-            }
-            else
-            {
-                InitContactCreation();
-                FillContactForm(newData);
-                SubmitContactCreation();
-                ReturnToHomePage();
-                SelectContact(p);
-            }
-            
+        {            
+            SelectContact(p);
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -49,22 +36,9 @@ namespace WebAddressbookTests
         }
 
       
-        public ContactHelper RemoveContact(int p, ContactData firstcontact)
-        {
-            if (IsElementPresent(By.Name("selected[]")))
-
-            {
-                SelectContact(p);
-            }
-            else
-            {
-                InitContactCreation();
-                FillContactForm(firstcontact);
-                SubmitContactCreation();
-                ReturnToHomePage();
-                SelectContact(p);
-            }
-            
+        public ContactHelper RemoveContact(int p)
+        {           
+            SelectContact(p);
             RemoveContact();
             CloseContactAlert();
             return this;
