@@ -18,15 +18,12 @@ namespace WebAddressbookTests
         {
             ContactData newData = new ContactData("updfirstname", "updlastname");
 
-            if (app.Contacts.IsElementPresent(By.Name("selected[]")) == true)
+            if (app.Contacts.IsElementPresent(By.Name("selected[]")) != true)
             {
-                app.Contacts.Modify(1, newData);
-            }
-            else
-            {                
                 app.Contacts.CreateContact(newData);
-                app.Contacts.Modify(1, newData);
             }
+            
+            app.Contacts.Modify(1, newData);            
         }
     }
 }

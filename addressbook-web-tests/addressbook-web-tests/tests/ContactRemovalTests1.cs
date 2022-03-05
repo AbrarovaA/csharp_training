@@ -16,16 +16,14 @@ namespace WebAddressbookTests
         [Test]
         public void ContactRemovalTest()
         {
-            if (app.Contacts.IsElementPresent(By.Name("selected[]")) == true)
-            {
-                app.Contacts.RemoveContact(1);
-            }
-            else
+            if (app.Contacts.IsElementPresent(By.Name("selected[]")) != true)
             {
                 ContactData firstcontact = new ContactData("myname", "mylastname");
                 app.Contacts.CreateContact(firstcontact);
-                app.Contacts.RemoveContact(1);
             }
+            
+            app.Contacts.RemoveContact(1);
+            
         }          
         
         

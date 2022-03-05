@@ -19,16 +19,13 @@ namespace WebAddressbookTests
         {
             app.Navigator.GoToGroupsPage();         
 
-            if (app.Groups.IsElementPresent(By.Name("selected[]")) == true)
-            {                
-                app.Groups.Remove(1);
-            }
-            else 
+            if (app.Groups.IsElementPresent(By.Name("selected[]")) != true)
             {
                 GroupData firstgroup = new GroupData("1");
                 app.Groups.Creat(firstgroup);
-                app.Groups.Remove(1);
-            }                   
+            }
+                           
+            app.Groups.Remove(1);                               
                      
         }            
                                

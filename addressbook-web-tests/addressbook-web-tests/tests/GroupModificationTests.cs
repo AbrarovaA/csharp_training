@@ -23,15 +23,13 @@ namespace WebAddressbookTests
 
             app.Navigator.GoToGroupsPage();
 
-            if (app.Groups.IsElementPresent(By.Name("selected[]")) == true)
+            if (app.Groups.IsElementPresent(By.Name("selected[]")) != true)
             {
-                app.Groups.Modify(1, newData);
-            }
-            else
-            {                
                 app.Groups.Creat(newData);
-                app.Groups.Modify(1, newData);
-            }
+            }                          
+               
+            app.Groups.Modify(1, newData);
+            
         }
     }
 }
