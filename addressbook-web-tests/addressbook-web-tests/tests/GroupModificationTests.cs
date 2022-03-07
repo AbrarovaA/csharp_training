@@ -23,13 +23,21 @@ namespace WebAddressbookTests
 
             app.Navigator.GoToGroupsPage();
 
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+
             if (app.Groups.IsElementPresent(By.Name("selected[]")) != true)
             {
                 app.Groups.Creat(newData);
             }                          
                
-            app.Groups.Modify(1, newData);
-            
+            app.Groups.Modify(0, newData);
+
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+            oldGroups[0].Name = newData.Name;
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
+
         }
     }
 }
