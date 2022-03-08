@@ -95,9 +95,9 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("home page")).Click();
             return this;
         }
-        public ContactHelper SelectContact(int index)
+        public ContactHelper SelectContact(int p)
         {
-            driver.FindElement(By.XPath("//*[@id='maintable']/tbody/tr/td[" + (index+1) + "]/input")).Click();
+            driver.FindElement(By.XPath("//*[@id='maintable']/tbody/tr/td[" + (p+1) + "]/input")).Click();
             return this;
         }
         public ContactHelper RemoveContact()
@@ -124,7 +124,7 @@ namespace WebAddressbookTests
         public List<ContactData> GetContactList()
         {
             List<ContactData> contacts = new List<ContactData>();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
             foreach (IWebElement element in elements)
             {
                 contacts.Add(new ContactData(element.Text, element.Text));
