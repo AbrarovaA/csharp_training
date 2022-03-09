@@ -41,7 +41,7 @@ namespace WebAddressbookTests
         {           
             SelectContact(p);
             RemoveContact();
-            CloseContactAlert();
+            CloseContactAlert();            
             return this;
         }
         public ContactHelper InitContactCreation()
@@ -131,6 +131,6 @@ namespace WebAddressbookTests
             }
             return contacts;
         }
-
+       
     }
 }

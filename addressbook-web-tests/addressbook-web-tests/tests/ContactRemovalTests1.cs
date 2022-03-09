@@ -23,15 +23,18 @@ namespace WebAddressbookTests
                 ContactData firstcontact = new ContactData("myname", "mylastname");
                 app.Contacts.CreateContact(firstcontact);
             }
-            
-            app.Contacts.RemoveContact(0);
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            oldContacts = app.Contacts.GetContactList();
 
-            oldContacts.RemoveAt(0);
+            app.Contacts.RemoveContact(0);            
+
+            List<ContactData> newContacts = app.Contacts.GetContactList();          
+
+            oldContacts.RemoveAt(0);            
+
             Assert.AreEqual(oldContacts, newContacts);
-        }          
-        
-        
+        }
+
+
     }
 }
