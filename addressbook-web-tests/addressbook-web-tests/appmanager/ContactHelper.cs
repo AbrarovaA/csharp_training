@@ -41,7 +41,8 @@ namespace WebAddressbookTests
         {           
             SelectContact(p);
             RemoveContact();
-            CloseContactAlert();            
+            CloseContactAlert();
+            driver.FindElement(By.CssSelector("div.msgbox"));
             return this;
         }
         public ContactHelper InitContactCreation()
