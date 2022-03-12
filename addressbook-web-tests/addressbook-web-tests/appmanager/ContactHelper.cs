@@ -125,10 +125,12 @@ namespace WebAddressbookTests
         public List<ContactData> GetContactList()
         {
             List<ContactData> contacts = new List<ContactData>();
-            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));            
+
             foreach (IWebElement element in elements)
             {
-                contacts.Add(new ContactData(element.Text, element.Text));
+                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+                contacts.Add(new ContactData(element.Text, element.Text));                
             }
             return contacts;
         }
