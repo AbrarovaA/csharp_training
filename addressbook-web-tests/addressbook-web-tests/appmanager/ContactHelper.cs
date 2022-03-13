@@ -89,6 +89,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+            contactCash = null;
             return this;
         }
         public ContactHelper ReturnToHomePage()
@@ -104,6 +105,7 @@ namespace WebAddressbookTests
         public ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            contactCash = null;
             return this;
         }
         public ContactHelper CloseContactAlert()
@@ -114,6 +116,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            contactCash = null;
             return this;
         }
 
@@ -122,19 +125,24 @@ namespace WebAddressbookTests
             driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
             return this;
         }
+
+        private List<ContactData> contactCash = null;
         public List<ContactData> GetContactList()
         {
-            List<ContactData> contacts = new List<ContactData>();
-            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));            
-
-            foreach (IWebElement element in elements)
+            if (contactCash == null)
             {
-                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
-                string lastname = cells[1].Text;
-                string firstname = cells[2].Text;
-                contacts.Add(new ContactData(cells[2].Text, cells[1].Text));                
+                contactCash = new List<ContactData>();
+                ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
+
+                foreach (IWebElement element in elements)
+                {
+                    IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+                    string lastname = cells[1].Text;
+                    string firstname = cells[2].Text;
+                    contactCash.Add(new ContactData(cells[2].Text, cells[1].Text));
+                }                           
             }
-            return contacts;
+            return new List<ContactData>(contactCash);
         }
        
     }
