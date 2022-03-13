@@ -130,7 +130,9 @@ namespace WebAddressbookTests
             foreach (IWebElement element in elements)
             {
                 IList<IWebElement> cells = element.FindElements(By.TagName("td"));
-                contacts.Add(new ContactData(element.Text, element.Text));                
+                string lastname = cells[1].Text;
+                string firstname = cells[2].Text;
+                contacts.Add(new ContactData(cells[2].Text, cells[1].Text));                
             }
             return contacts;
         }
