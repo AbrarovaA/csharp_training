@@ -64,7 +64,7 @@ namespace WebAddressbookTests
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
-            groupCash = null;
+            groupCache = null;
             return this;
         }
         public GroupHelper ReturnToGroupsPage()
@@ -81,13 +81,13 @@ namespace WebAddressbookTests
         public GroupHelper RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
-            groupCash = null;
+            groupCache = null;
             return this;
         }
         public GroupHelper SubmitGroupModification()
         {
             driver.FindElement(By.Name("update")).Click();
-            groupCash = null;
+            groupCache = null;
             return this;
         }
 
@@ -97,23 +97,37 @@ namespace WebAddressbookTests
             return this;
         }
 
-        private List<GroupData> groupCash = null;
+        private List<GroupData> groupCache = null;
         public List<GroupData> GetGroupList()
         {
-            if (groupCash == null)
+            if (groupCache == null)
             {
-                groupCash = new List<GroupData>();
+                groupCache = new List<GroupData>();
                 manager.Navigator.GoToGroupsPage();
                 ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
                 foreach (IWebElement element in elements)
                 {
-                    groupCash.Add(new GroupData(element.Text) 
+                    groupCache.Add(new GroupData(null) 
                     { 
                         Id = element.FindElement(By.TagName("input")).GetAttribute("value")
                     });
                 }
+                string allGroupNames = driver.FindElement(By.CssSelector("div#content form")).Text;
+                string[] parts = allGroupNames.Split('\n');
+                int shift = groupCache.Count - parts.Length;
+                for (int i = 0; i < groupCache.Count; i++)
+                {
+                    if (i < shift)
+                    {
+                        groupCache[i].Name = "";
+                    }
+                    else
+                    {
+                        groupCache[i].Name = parts[i - shift].Trim();
+                    }
+                }
             }           
-            return new List <GroupData>(groupCash);
+            return new List <GroupData>(groupCache);
         }
 
         public int GetGroupCount()
