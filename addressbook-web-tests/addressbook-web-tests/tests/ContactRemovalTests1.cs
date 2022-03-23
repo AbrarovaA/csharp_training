@@ -22,11 +22,11 @@ namespace WebAddressbookTests
             {
                 ContactData firstcontact = new ContactData("myname", "mylastname");
                 app.Contacts.CreateContact(firstcontact);
-            }
+            }           
 
             oldContacts = app.Contacts.GetContactList();
 
-            app.Contacts.RemoveContact(0);            
+            app.Contacts.RemoveContact(0);
 
             List<ContactData> newContacts = app.Contacts.GetContactList();          
 
