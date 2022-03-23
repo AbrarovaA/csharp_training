@@ -42,7 +42,7 @@ namespace WebAddressbookTests
             RemoveContact();
             CloseContactAlert();
             driver.FindElement(By.CssSelector("div.msgbox"));
-            Wait();
+            manager.Navigator.Wait();
             return this;
         }
         public ContactHelper InitContactCreation()
@@ -183,14 +183,7 @@ namespace WebAddressbookTests
                 Mobile = mobilePhone,
                 Work = workPhone
             };
-        }
-
-        public ContactHelper Wait()
-        {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            return this;
-        }
-
+        }      
         public ContactHelper HomePage()
         {
             driver.FindElement(By.LinkText("home")).Click();

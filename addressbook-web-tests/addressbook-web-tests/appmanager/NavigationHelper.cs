@@ -36,5 +36,11 @@ namespace WebAddressbookTests
             }
             driver.FindElement(By.LinkText("groups")).Click();
         }
+        public NavigationHelper Wait()
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            return this;
+        }
+
     }
 }
