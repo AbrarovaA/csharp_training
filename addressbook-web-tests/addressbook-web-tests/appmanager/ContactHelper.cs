@@ -184,11 +184,6 @@ namespace WebAddressbookTests
                 Work = workPhone
             };
         }      
-        public ContactHelper HomePage()
-        {
-            driver.FindElement(By.LinkText("home")).Click();
-            return this;
-        }
-
+      
     }
 }

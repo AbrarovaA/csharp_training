@@ -22,7 +22,7 @@ namespace WebAddressbookTests
             Assert.AreEqual(fromTable.Address, fromForm.Address);
             Assert.AreEqual(fromTable.AllPhones, fromForm.AllPhones);
 
-            app.Contacts.HomePage();
+            app.Navigator.GoToHomePage();
             
         }
     }
